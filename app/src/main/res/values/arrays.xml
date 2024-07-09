@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string-array name="items">
+    <string-array name="dropdown_items">
         <item>U+0 ‒ U+FFF</item>
         <item>U+1000 ‒ U+1FFF</item>
         <item>U+2000 ‒ U+2FFF</item>
         <item>U+3000 ‒ U+3FFF</item>
-        <item>U+4000 ‒ U+4FFF</item>
+        <item>U+4000 ‒ U+9FFF</item>
         <item>U+A000 ‒ U+AFFF</item>
         <item>U+B000 ‒ U+EFFF</item>
         <item>U+F000 ‒ U+FFFF</item>

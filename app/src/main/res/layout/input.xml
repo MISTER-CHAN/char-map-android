@@ -18,24 +18,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/b_back"
+            style="?attr/materialIconButtonFilledTonalStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/ic_arrow_back"
+            app:layout_constraintBottom_toBottomOf="@id/til"
+            app:layout_constraintEnd_toStartOf="@id/til"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/til" />
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til"
-            style="@style/Widget.Material3.TextInputLayout.FilledBox.Dense.ExposedDropdownMenu"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/b_go"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/b_back"
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.MaterialAutoCompleteTextView
                 android:id="@+id/actv"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@android:color/transparent"
-                android:completionThreshold="100"
-                android:text="@string/zero"
-                android:textSize="16sp" />
+                android:layout_height="match_parent"
+                android:inputType="text"
+                android:maxLines="1"
+                android:text="@string/zero" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
@@ -83,6 +93,7 @@
         android:id="@+id/rv"
         android:layout_width="match_parent"
         android:layout_height="336dp"
+        android:background="?android:attr/colorBackground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
