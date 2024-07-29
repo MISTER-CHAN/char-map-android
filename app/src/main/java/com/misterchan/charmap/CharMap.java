@@ -1,8 +1,10 @@
 package com.misterchan.charmap;
 
+import android.content.res.Configuration;
 import android.inputmethodservice.InputMethodService;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 
@@ -40,8 +42,15 @@ public class CharMap extends InputMethodService {
 
     @Override
     public View onCreateInputView() {
-        layoutManager = new GridLayoutManager(this, 0x10);
+        boolean isLandscape = getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE;
+
+        layoutManager = new GridLayoutManager(this, isLandscape ? 0x20 : 0x10);
         input = InputBinding.inflate(getLayoutInflater());
+
+        if (isLandscape) {
+            ViewGroup.LayoutParams lp = input.rv.getLayoutParams();
+            lp.height >>= 1;
+        }
 
         input.bBack.setOnClickListener(v -> onBackButtonClick());
         input.actv.setAdapter(new ArrayAdapter(this, R.layout.dropdown_item, getResources().getStringArray(R.array.dropdown_items)));
