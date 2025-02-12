@@ -144,13 +144,14 @@ public class CharMap extends InputMethodService {
         }
         InputConnection ic = getCurrentInputConnection();
         CharSequence text = ic.getTextBeforeCursor(2, 0);
+        if (text.length() == 0) {
+            return false;
+        }
         int codepointFrom;
         if (Character.isHighSurrogate(text.charAt(0)) && text.length() == 2 && Character.isLowSurrogate(text.charAt(1))) {
             codepointFrom = Character.toCodePoint(text.charAt(0), text.charAt(1));
-        } else if (text.length() > 0) {
-            codepointFrom = text.charAt(text.length() - 1);
         } else {
-            return false;
+            codepointFrom = text.charAt(text.length() - 1);
         }
         if (codepointFrom == codepoint) {
             return false;
