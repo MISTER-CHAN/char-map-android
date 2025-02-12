@@ -13,6 +13,10 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         void onClick(int codepoint);
     }
 
+    public interface OnItemLongClickListener {
+        boolean onLongClick(int codepoint);
+    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView tv;
 
@@ -22,10 +26,12 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         }
     }
 
-    private final OnItemClickListener listener;
+    private final OnItemClickListener onItemClickListener;
+    private final OnItemLongClickListener onItemLongClickListener;
 
-    public Adapter(OnItemClickListener l) {
-        listener = l;
+    public Adapter(OnItemClickListener onItemClickListener, OnItemLongClickListener onItemLongClickListener) {
+        this.onItemClickListener = onItemClickListener;
+        this.onItemLongClickListener = onItemLongClickListener;
     }
 
     @NonNull
@@ -37,7 +43,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.tv.setText(String.valueOf(Character.toChars(position)));
-        holder.itemView.setOnClickListener(v -> listener.onClick(position));
+        holder.itemView.setOnClickListener(v -> onItemClickListener.onClick(position));
+        holder.itemView.setOnLongClickListener(v -> onItemLongClickListener.onLongClick(position));
     }
 
     @Override
