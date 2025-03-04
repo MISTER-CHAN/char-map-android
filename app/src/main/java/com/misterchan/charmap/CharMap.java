@@ -91,7 +91,7 @@ public class CharMap extends InputMethodService {
             try {
                 codePoint = Integer.parseUnsignedInt(text.toString(), 0x10);
             } catch (NumberFormatException e) {
-                showDialog();
+                showListDialog();
                 return;
             }
         }
@@ -157,7 +157,7 @@ public class CharMap extends InputMethodService {
             return false;
         }
         AlertDialog dialog = new MaterialAlertDialogBuilder(input.getRoot().getContext(), com.google.android.material.R.style.MaterialAlertDialog_Material3)
-                .setTitle(String.format("Commit %d characters", Math.abs(codepoint - codepointFrom)))
+                .setMessage(String.format("Commit %d characters", Math.abs(codepoint - codepointFrom)))
                 .setPositiveButton("OK", (d, which) -> {
                     StringBuilder sb = new StringBuilder();
                     for (int step = codepointFrom <= codepoint ? 1 : -1, i = codepointFrom + step; i != codepoint; i += step) {
@@ -194,7 +194,7 @@ public class CharMap extends InputMethodService {
         input.actv.setText(Integer.toHexString(codePoint).toUpperCase());
     }
 
-    private void showDialog() {
+    private void showListDialog() {
         CharSequence text = input.actv.getText();
         List<CharSequence> itemList = new ArrayList<>();
         List<Integer> codePointList = new ArrayList<>();
