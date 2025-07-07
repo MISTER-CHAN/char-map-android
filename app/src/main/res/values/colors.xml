@@ -5,9 +5,8 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-<!--    <color name="black">#FF000000</color>-->
-<!--    <color name="white">#FFFFFFFF</color>-->
-
+<!--<color name="black">#FF000000</color>-->
+<!--<color name="white">#FFFFFFFF</color>-->
 
     <color name="purple_80">#FFD0BCFF</color>
     <color name="purple_grey_80">#FFCCC2DC</color>
@@ -18,4 +17,6 @@
     <color name="purple_grey_40">#FF625B71</color>
     <color name="pink_40">#FF7D5260</color>
     <color name="black">#FF000000</color>
+
+    <color name="system_on_surface_variant">@android:color/system_on_surface_variant_light</color>
 </resources>
