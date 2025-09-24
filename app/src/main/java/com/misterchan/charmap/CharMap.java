@@ -28,7 +28,7 @@ public class CharMap extends InputMethodService {
     private int position;
 
     private final AdapterView.OnItemClickListener onDropdownItemClickListener = new AdapterView.OnItemClickListener() {
-        private static final int[] codePoints = {0x0, 0x1000, 0x2000, 0x3000, 0x4000, 0xA000, 0xB000, 0xF000, 0x10000};
+        private static final int[] codePoints = {0x0, 0x1000, 0x2000, 0x3000, 0x4000, 0xA000, 0xB000, 0xF000, 0x10000, 0x1D000, 0x1F000, 0x20000};
 
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -81,7 +81,7 @@ public class CharMap extends InputMethodService {
     private void onGoButtonClick() {
         CharSequence text = input.actv.getText();
         int codePoint;
-        if (text.length() == 0) {
+        if (text.isEmpty()) {
             return;
         } else if (text.length() == 1
                 || text.length() == 2 && Character.isHighSurrogate(text.charAt(0)) && Character.isLowSurrogate(text.charAt(1))) {
@@ -144,7 +144,7 @@ public class CharMap extends InputMethodService {
         }
         InputConnection ic = getCurrentInputConnection();
         CharSequence text = ic.getTextBeforeCursor(2, 0);
-        if (text.length() == 0) {
+        if (text.isEmpty()) {
             return false;
         }
         int codepointFrom;
